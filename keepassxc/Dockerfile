@@ -8,25 +8,29 @@
 #		-e DISPLAY=unix$DISPLAY \
 #		jess/keepassxc
 #
-FROM alpine:edge
+FROM alpine:latest
 LABEL maintainer "Christian Koep <christiankoep@gmail.com>"
 
-ENV KEEPASSXC_VERSION 2.3.3
+ENV KEEPASSXC_VERSION 2.5.4
 
 RUN buildDeps=' \
-                automake \
-				argon2-dev \
-                bash \
-                cmake \
-				curl-dev \
-                g++ \
-                gcc \
-                git \
-                libgcrypt-dev \
-                libmicrohttpd-dev \
-                make \
-                qt5-qtbase-dev \
-                qt5-qttools-dev \
+		automake \
+		argon2-dev \
+		bash \
+		cmake \
+		curl-dev \
+		expat \
+		g++ \
+		gcc \
+		git \
+		libgcrypt-dev \
+		libmicrohttpd-dev \
+		libqrencode-dev	\
+		libsodium-dev \
+		make \
+		qt5-qtbase-dev \
+		qt5-qtsvg-dev \
+		qt5-qttools-dev \
 	' \
 	set -x \
 	&& apk --no-cache add \
@@ -47,9 +51,12 @@ RUN	apk --no-cache add \
 		libcurl \
 		libmicrohttpd \
 		libgcrypt \
+		libqrencode \
+		libsodium \
 		mesa-dri-intel \
 		qt5-qtbase \
 		qt5-qtbase-x11 \
+		qt5-qtsvg \
 		qt5-qttools \
 		ttf-dejavu
 
